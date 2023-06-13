@@ -10,7 +10,6 @@ services:
     name: mysite
     env: docker
     dockerfilePath: ./production.Dockerfile
-    #repo: https://github.com/ryanwi/rails7-on-docker
     repo: https://github.com/axeldeveloper/ror7-on-docker
     region: oregon
     branch: main
