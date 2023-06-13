@@ -1,4 +1,6 @@
-<%= form_with(model: article) do |form| %>
+<%= form_with(model: article, class: 'pure-form pure-form-stacked') do |form| %>
+<fieldset> 
+<div class="pure-g">
   <% if article.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
@@ -11,17 +13,27 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :title %>
-    <%= form.text_field :title %>
+  <div class="pure-u-1 pure-u-md-1-3">
+    <%= form.label :title, class: 'multi-last-name'  %>
+    <%= form.text_field :title, class: 'pure-u-23-24' %>
   </div>
 
-  <div class="field">
-    <%= form.label :content %>
-    <%= form.rich_text_area :content %>
+  <div class="pure-u-1 pure-u-md-1-3">
+    <%= form.label :content, class: 'multi-last-name'  %>
+    <%= form.rich_text_area :content, class: "pure-u-23-24" %>
+  </div>
+ <div class="pure-u-1 pure-u-md-1-3">
+  <br/><br/>
+  <div class="pure-controls">
+    <%= form.submit 'Criar', class: 'pure-button pure-button-primary' %>
+    <%= link_to 'Voltar', articles_path, class: 'pure-button pure-button-primary' %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
+</div>
+
+ 
+
+
+</div>
+</fieldset>
 <% end %>

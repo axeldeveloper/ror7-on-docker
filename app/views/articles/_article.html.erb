@@ -1,23 +1,31 @@
-<div id="<%= dom_id article %>" class="scaffold_record">
-  <p>
-    <strong>Title:</strong>
+<div id="<%= dom_id article %>" class="content">
+  <h2 class="content-subhead">Titulo</h2>
+  <p class="card-header-title">
     <%= article.title %>
   </p>
 
-  <p>
-    Posted <%= time_tag article.created_at %>
-  </p>
+  <h2 class="content-subhead">
+      Posted: <%= time_tag article.created_at %>
+  </h2>
+  <!-- 
+    <div class="pure-g">
+      <div class="pure-u-1-4">
+          <img class="pure-img-responsive" src="http://farm3.staticflickr.com/2875/9069037713_1752f5daeb.jpg" alt="Peyto Lake">
+      </div>
+    </div>
+    -->
+
+  <div class="content">
+    <h2 class="content-subhead">Content</h2>
+    <p>
+      <%= article.content %>
+    </p>
+  </div>
 
   <p>
-    <strong><%= pluralize article.comments.count, "comment" %></strong>
+      <%= pluralize article.comments.count, "comment" %>
   </p>
 
-  <p>
-    <strong>Content:</strong>
-    <%= article.content %>
-  </p>
-
-  <p>
-    <%= link_to "Show this article", article %>
-  </p>
 </div>
+<hr>
+
