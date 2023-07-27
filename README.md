@@ -19,6 +19,7 @@ This app demonstrates Rails 7 with PostgreSQL, import maps, turbo, stimulus and 
   * tests
   * Rubocop for linting
   * Security checks with [Brakeman](https://github.com/presidentbeef/brakeman) and [bundler-audit](https://github.com/rubysec/bundler-audit)
+  * Building and testing of a production Docker image
 * Dependabot for automated updates
 
 ## Requirements
@@ -69,8 +70,16 @@ docker compose up --build
 
 ## Production build
 
+(adjust tags as needed)
+
+### with [BuildKit](https://docs.docker.com/build/buildkit/)
 ```
-docker build -f production.Dockerfile .
+DOCKER_BUILDKIT=1 docker build --tag rails-on-docker --file production.Dockerfile . --load
+```
+
+### With legacy builder (no BuildKit)
+```
+docker build --tag rails-on-docker --file production.Dockerfile .
 ```
 
 ## Deployment
@@ -91,6 +100,9 @@ NOTE: You will need to generate a production secret with `bin/rails secret` and 
 Build, Ship, and Run Your Applications Everywhere](https://pragprog.com/titles/ridocker/docker-for-rails-developers/)
 * [Ruby on Whales:
 Dockerizing Ruby and Rails development](https://evilmartians.com/chronicles/ruby-on-whales-docker-for-ruby-rails-development)
+* [Rails generator to produce Dockerfiles and related files](https://github.com/rubys/dockerfile-rails)
+* [docker init](https://docs.docker.com/engine/reference/commandline/init/)
+* [Rails 7.1 Dockerfile Generator Template](https://github.com/rails/rails/blob/main/railties/lib/rails/generators/rails/app/templates/Dockerfile.tt)
 
 ### Rails 7 with importmaps 
 
@@ -109,4 +121,5 @@ Dockerizing Ruby and Rails development](https://evilmartians.com/chronicles/ruby
 
 - <https://www.ryanwilliams.dev>
 - <https://twitter.com/ryanwi>
+- <https://hachyderm.io/@ryanwi>
 - <https://github.com/ryanwi>
