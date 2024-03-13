@@ -1,7 +1,8 @@
 services:
   web:
     build: .
-    command: bash -c "rm -f tmp/pids/server.pid && bin/rails s -p 3000 -b '0.0.0.0'"
+    # command: bash -c "rm -f tmp/pids/server.pid && bin/rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && bin/rails db:migrate && bin/rails s -p 3000 -b '0.0.0.0'"
     volumes:
       - .:/usr/src/app
       - bundle:/usr/local/bundle
@@ -26,6 +27,7 @@ services:
       - .env
     environment:
       - PROVIDER=changeme
+      - POSTGRES_DB=ror7_blog
 
     volumes:
       - pg_data:/var/lib/postgresql/data

@@ -78,3 +78,9 @@ group :test do
   gem "selenium-webdriver"
   gem "webdrivers"
 end
+
+gem "devise"
+# gem "cloudinary"
+gem 'faker'
+gem 'activeadmin'
+gem "active_admin_import"

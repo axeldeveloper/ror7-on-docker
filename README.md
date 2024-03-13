@@ -6,7 +6,8 @@ Start here: https://github.com/ryanwi/rails7-on-docker/generate
 
 This app demonstrates Rails 7 with PostgreSQL, import maps, turbo, stimulus and hotwire, all running in Docker.
 
-**NOTE:** [There is also an example Rails 6 application working in Docker with Webpacker](https://github.com/ryanwi/rails-on-docker)
+**NOTE:** 
+
 
 ## Features
 
@@ -24,21 +25,42 @@ This app demonstrates Rails 7 with PostgreSQL, import maps, turbo, stimulus and 
 
 ## Requirements
 
-Please ensure you are using Docker Compose V2. This project relies on the `docker compose` command, not the previous `docker-compose` standalone program.
+Please ensure you are using Docker Compose V2. 
+
+This project relies on the `docker compose` 
+
+command, not the previous `docker-compose` standalone program.
 
 https://docs.docker.com/compose/#compose-v2-and-the-new-docker-compose-command
 
 Check your docker compose version with:
-```
-% docker compose version
-Docker Compose version v2.10.2
+```sh
+$ docker compose version
+# Docker Compose version v2.10.2
 ```
 
+# erros no docker
+  sudo chown -R $(whoami) ~/.docker
+
+
 ## Initial setup
-```
-cp .env.example .env
-docker compose build
-docker compose run --rm web bin/rails db:setup
+```shell
+$ cp .env.example .env
+
+ DOCKER_BUILDKIT=1 docker build .
+
+$ docker compose build
+
+ docker-compose up --scale db=1
+
+
+# erros comusn no docker 
+# open /Users/axel/.docker/buildx/current: permission denied
+# export DOCKER_BUILDKIT=0
+# sudo chown -R $(whoami) ~/.docker 
+
+$ docker compose run --rm web bin/rails db:setup
+$ docker-compose run --rm -e RAILS_ENV=development web bin/rails db:migrate
 ```
 
 ## Running the Rails app

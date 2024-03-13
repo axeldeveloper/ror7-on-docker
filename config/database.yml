@@ -6,12 +6,21 @@ default: &default
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
+  <<: *default
+  database: <%= ENV['POSTGRES_DB'] %>
+  username: <%= ENV['POSTGRES_USER'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  host: <%= ENV['POSTGRES_HOST'] %>
+  port: <%= ENV['POSTGRES_PORT'] %>
+
+
+development_a:
     <<: *default
-    database: <%= ENV['POSTGRES_DB'] %>
-    username: <%= ENV['POSTGRES_USER'] %>
-    password: <%= ENV['POSTGRES_PASSWORD'] %>
-    host: <%= ENV['POSTGRES_HOST'] %>
-    port: <%= ENV['POSTGRES_PORT'] %>
+    database: ror7_blog
+    username: postgres
+    password: postgres
+    host: db
+    port: 5432
 
 test:
   <<: *default
