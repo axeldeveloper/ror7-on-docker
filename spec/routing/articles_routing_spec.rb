@@ -6,8 +6,8 @@ RSpec.describe ArticlesController, type: :routing do
       expect(get: "/articles").to route_to("articles#index")
     end
 
-    it "routes to #new" do
-      expect(get: "/articles/new").to route_to("articles#new")
+    it "routes to #new1" do
+      expect(get: "/articles/new1").to route_to("articles#new")
     end
 
     it "routes to #show" do

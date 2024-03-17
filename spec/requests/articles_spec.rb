@@ -40,7 +40,7 @@ RSpec.describe "/articles", type: :request do
     end
   end
 
-  describe "GET /new" do
+  describe "GET /new1" do
     it "renders a successful response" do
       get new_article_url
       expect(response).to be_successful
@@ -57,7 +57,7 @@ RSpec.describe "/articles", type: :request do
 
   describe "POST /create" do
     context "with valid parameters" do
-      it "creates a new Article" do
+      it "creates a new1 Article" do
         expect {
           post articles_url, params: { article: valid_attributes }
         }.to change(Article, :count).by(1)
@@ -70,13 +70,13 @@ RSpec.describe "/articles", type: :request do
     end
 
     context "with invalid parameters" do
-      it "does not create a new Article" do
+      it "does not create a new1 Article" do
         expect {
           post articles_url, params: { article: invalid_attributes }
         }.to change(Article, :count).by(0)
       end
 
-      it "renders a successful response (i.e. to display the 'new' template)" do
+      it "renders a successful response (i.e. to display the 'new1' template)" do
         post articles_url, params: { article: invalid_attributes }
         expect(response).to be_successful
       end

@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe "articles/new", type: :view do
+RSpec.describe "articles/new1", type: :view do
   before(:each) do
     assign(:article, Article.new(
       title: "MyString",
@@ -8,7 +8,7 @@ RSpec.describe "articles/new", type: :view do
     ))
   end
 
-  it "renders new article form" do
+  it "renders new1 article form" do
     render
 
     assert_select "form[action=?][method=?]", articles_path, "post" do

@@ -1,27 +1,17 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Axel Developer TI mincro blog</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
-
-    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
-    <%= javascript_importmap_tags %>
-
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/purecss@3.0.0/build/pure-min.css"
-    integrity="sha384-X38yfunGUhNzHpBaEBsWLO+A0HDYOQi8ufWDkZ0k9e0eXz/tH3II7uKZ9msv++Ls" crossorigin="anonymous">
-  </head>
+<head>
+  <%= render 'shared/head' %>
+</head>
 
   <body>
 
-    <div id="layout" class="content pure-g">
+    <div id="layout" class="content pure-g" data-controller="hello">
       <div id="nav" class="pure-u">
           <a href="#" id="menuLink" class="nav-menu-button">Menu</a>
 
           <div class="nav-inner">
-              <button class="primary-button pure-button">Last Posts</button>
+              <button class="primary-button pure-button" data-action="hello#greet">Last Posts</button>
 
               <div class="pure-menu">
                   <ul class="pure-menu-list">
@@ -30,6 +20,14 @@
                       <li class="pure-menu-item"><a href="#" class="pure-menu-link">PHP</a></li>
                       <li class="pure-menu-item"><a href="#" class="pure-menu-link">Ruby</a></li>
                       <li class="pure-menu-item"><a href="#" class="pure-menu-link">Rails</a></li>
+                      <li class="pure-menu-item">
+                        <%= link_to "Log in", new_user_session_path, class: "pure-menu-link"  %>
+                      </li>
+                        <li class="pure-menu-item">
+                          <%= link_to "sign_up", new_user_registration_path, class: "pure-menu-link"  %>
+                        </li>
+
+
                       <li class="pure-menu-heading">Labels</li>
                       <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="email-label-personal"></span>Database</a></li>
                       <li class="pure-menu-item"><a href="#" class="pure-menu-link"><span class="email-label-work"></span>SQL</a></li>

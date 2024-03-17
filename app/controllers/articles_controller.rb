@@ -10,7 +10,7 @@ class ArticlesController < ApplicationController
   def show
   end
 
-  # GET /articles/new
+  # GET /articles/new1
   def new
     @article = Article.new
   end
@@ -28,7 +28,7 @@ class ArticlesController < ApplicationController
         format.html { redirect_to @article, notice: "Article was successfully created." }
         format.json { render :show, status: :created, location: @article }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { render :new1, status: :unprocessable_entity }
         format.json { render json: @article.errors, status: :unprocessable_entity }
       end
     end

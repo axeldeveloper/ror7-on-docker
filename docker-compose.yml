@@ -28,10 +28,8 @@ services:
     environment:
       - PROVIDER=changeme
       - POSTGRES_DB=ror7_blog
-
     volumes:
       - pg_data:/var/lib/postgresql/data
-
     healthcheck:
       test: pg_isready -U postgres
       interval: 2s
@@ -42,6 +40,17 @@ services:
     image: redis
     volumes:
       - redis_data:/data
+
+#  assets:
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    depends_on:
+#      - web
+#    command: sh -c "bin/rails assets:precompile && yarn build"
+#    volumes:
+#      # .:/app
+#      - .:/usr/src/app
 
 volumes:
   pg_data:
