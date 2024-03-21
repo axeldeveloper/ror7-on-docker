@@ -48,6 +48,10 @@ gem "bootsnap", require: false
 # Use Sass to process CSS
 # gem "sassc-rails", "~> 2.1"
 
+# Use Tailwind CSS [https://gith#
+# gem "tailwindcss-rails", ">= 0.4.3"
+
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 gem "image_processing", "~> 1.12"
 
@@ -81,7 +85,7 @@ group :development do
   gem "web-console"
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  gem "rack-mini-profiler"
+  gem "rack-mini-profiler", require: false
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"

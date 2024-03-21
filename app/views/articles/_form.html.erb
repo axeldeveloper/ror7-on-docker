@@ -1,39 +1,44 @@
-<%= form_with(model: article, class: 'pure-form pure-form-stacked') do |form| %>
-<fieldset> 
-<div class="pure-g">
-  <% if article.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
 
-      <ul>
-        <% article.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+
+  <%= form_with(model: article, class: 'pure-form pure-form-stacked') do |form| %>
+
+    <% if article.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(article.errors.count, "error") %> prohibited this article from being saved:</h2>
+
+        <ul>
+          <% article.errors.each do |error| %>
+            <li><%= error.full_message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="border-b border-gray-900/10 pb-12">
+      <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
+        <div class="col-span-full">
+          <%= form.label :title, class: "block text-sm font-medium leading-6 text-gray-900" %>
+          <div class="mt-2">
+            <%= form.text_field :title,
+                autocomplete: "street-address",
+                class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"%>
+          </div>
+        </div>
+        <div class="col-span-full">
+          <%= form.label :content, class: 'block text-sm font-medium leading-6 text-gray-900'  %>
+          <div class="mt-2">
+            <%= form.rich_text_area :content,
+                autocomplete: "postal-code",
+                class: "block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6" %>
+          </div>
+        </div>
+      </div>
     </div>
+
+    <div class="mt-6 flex items-center justify-start gap-x-6">
+      <%= link_to 'Voltar', articles_path, class: 'text-sm font-semibold leading-6 text-gray-900' %>
+      <%= form.submit 'Criar', class: 'rounded-md bg-indigo-600 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600' %>
+    </div>
+
+
   <% end %>
-
-  <div class="pure-u-1 pure-u-md-1-3">
-    <%= form.label :title, class: 'multi-last-name'  %>
-    <%= form.text_field :title, class: 'pure-u-23-24' %>
-  </div>
-
-  <div class="pure-u-1 pure-u-md-1-3">
-    <%= form.label :content, class: 'multi-last-name'  %>
-    <%= form.rich_text_area :content, class: "pure-u-23-24" %>
-  </div>
- <div class="pure-u-1 pure-u-md-1-3">
-  <br/><br/>
-  <div class="pure-controls">
-    <%= form.submit 'Criar', class: 'pure-button pure-button-primary' %>
-    <%= link_to 'Voltar', articles_path, class: 'pure-button pure-button-primary' %>
-  </div>
-
-</div>
-
- 
-
-
-</div>
-</fieldset>
-<% end %>

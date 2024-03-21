@@ -1,32 +1,28 @@
-<div id="<%= dom_id article %>" class="content">
-  <h2 class="content-subhead">Titulo</h2>
-  <p class="card-header-title">
-    <%= article.title %>
-  </p>
+<div id="<%= dom_id article %>" class="content space-y-12">
 
-  <h2 class="content-subhead">
-      Posted: <%= time_tag article.created_at %>
-  </h2>
+  <div class="border-0 border-red-500 pb-12">
+    <dl class="max-w-full text-gray-900 divide-y dark:text-white dark:divide-gray-700">
+        <div class="flex flex-col pb-3">
+          <dt class="md:text-lg dark:text-gray-950 mb-3 first-line:uppercase first-line:tracking-widest first-letter:text-7xl first-letter:font-bold dark:first-letter:text-indigo-600 first-letter:me-3 first-letter:float-start">
+            Titulo
+          </dt>
+          <dd class="text-lg font-black dark:text-gray-950">  <%= article.title %> </dd>
+        </div>
+        <div class="flex flex-col py-3">
+          <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-950">Posted: </dt>
+          <dd class="text-lg font-black dark:text-gray-950"> <%= time_tag article.created_at %> </dd>
+        </div>
+        <div class="flex flex-col py-3">
+          <dt class="mb-1 text-gray-500 md:text-lg dark:text-gray-950">Content: </dt>
+          <dd class="text-lg font-black dark:text-gray-950"><%= article.content %> </dd>
+        </div>
+    </dl>
 
-  <!--
-    <div class="pure-g">
-      <div class="pure-u-1-4">
-          <img class="pure-img-responsive" src="http://farm3.staticflickr.com/2875/9069037713_1752f5daeb.jpg" alt="Peyto Lake">
-      </div>
-    </div>
-    -->
-
-  <div class="content">
-    <h2 class="content-subhead">Content</h2>
     <p>
-      <%= article.content %>
+      <%= pluralize article.comments.count, "comment" %>
     </p>
+
+
   </div>
 
-  <p>
-      <%= pluralize article.comments.count, "comment" %>
-  </p>
-
 </div>
-<hr>
-
