@@ -6,17 +6,15 @@
 import { application } from "controllers/application"
 
 // Eager load all controllers defined in the import map under controllers/**/*_controller
-import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
-eagerLoadControllersFrom("controllers", application)
-// lazyLoadControllersFrom("controllers", application)
+// import { eagerLoadControllersFrom } from "@hotwired/stimulus-loading"
+// eagerLoadControllersFrom("controllers", application)
 
-
+import { lazyLoadControllersFrom } from "@hotwired/stimulus-loading"
+lazyLoadControllersFrom("controllers", application)
 
 
 //import { application } from "./application"
-
 //import HelloController from "./hello_controller"
 //application.register("hello", HelloController)
-
 //import PostController from "./post_controller"
 //application.register("post", PostController)
