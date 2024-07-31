@@ -1,7 +1,11 @@
-# syntax=docker/dockerfile:1
+# syntax = docker/dockerfile:1
+
+# This Dockerfile is designed for production, not development. Use with Kamal or build'n'run by hand:
+# docker build -t my-app .
+# docker run -d -p 80:80 -p 443:443 --name my-app -e RAILS_MASTER_KEY=<value from config/master.key> my-app
+
 
 ARG RUBY_VERSION=3.2.2
-
 FROM ruby:${RUBY_VERSION}-slim as base
 
 WORKDIR /rails
@@ -89,7 +93,8 @@ USER rails:rails
 # Run database migrations when deploying to Render. It is not great, maybe there's a better way?
 # https://community.render.com/t/release-command-for-db-migrations/247/6
 ARG RENDER
-ARG DATABASE_URL
+# ARG DATABASE_URL
+ARG DATABASE_URL_3
 ARG SECRET_KEY_BASE
 RUN if [ -z "$RENDER" ]; then echo "var is unset"; else bin/rails db:migrate; fi
 
